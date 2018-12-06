@@ -1,0 +1,3 @@
+ctrl + click to multi click
+
+when you have highlighted a word, ctrl + d to highlight the next copy of that word in the document

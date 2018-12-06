@@ -1,0 +1,32 @@
+install using apm
+
+apm install atom-sass
+
+Open scss file, press: Alt + Ctrl + c to watch for file changes
+
+Upon modification, save, and it will automatically comple and generate a css file
+
+
+-----
+
+to import:
+
+@import "filename" (dont include ext)
+
+name file: "_filename.scss"
+
+to inherit:
+
+@extend .classname (do this inside of another class)
+
+eg:
+
+.panel{
+	some stuff
+	some more stuff
+}
+
+.little_panel{
+	@extend .panel
+}
+
