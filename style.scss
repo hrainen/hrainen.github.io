@@ -2,30 +2,45 @@ $hoverColor: #16a085;
 $textColor: #ffffff;
 $bgColor: #2c3e50;
 $posVal: fixed;
+$opacLogo: .2;
 
 body, html {
   height: 100%;
 }
 
+/*
 .logo-img {
+
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-
+  position: absolute;
 }
+*/
 .bg-logo {
-  animation: bg-logo-fade 10s;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.bg-logo-img > img {
+  animation: bg-logo-fade 16s;
+  opacity: $opacLogo;
+}
+
+.bg-logo-img {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 @keyframes bg-logo-fade{
   from {
-    opacity: .2;
-    -webkit-transform:scale(.1);
+    -webkit-transform:scale(0);
   }
 
   to {
-    opacity: 1;
     -webkit-transform:scale(1);
   }
 }

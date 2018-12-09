@@ -1,21 +1,34 @@
 body, html {
   height: 100%; }
 
+/*
 .logo-img {
+
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%; }
-
+  width: 50%;
+  position: absolute;
+}
+*/
 .bg-logo {
-  animation: bg-logo-fade 10s; }
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr; }
+
+.bg-logo-img > img {
+  animation: bg-logo-fade 16s;
+  opacity: 0.2; }
+
+.bg-logo-img {
+  grid-column: 2;
+  grid-row: 2; }
 
 @keyframes bg-logo-fade {
   from {
-    opacity: .2;
-    -webkit-transform: scale(0.1); }
+    -webkit-transform: scale(0); }
   to {
-    opacity: 1;
     -webkit-transform: scale(1); } }
 .bg {
   /* The image used */
