@@ -36,11 +36,17 @@ body, html {
 
 }
 
+a#logo-navbar-img > img {
+  //background-image: url("/img/logo.png");
+  height: 35px;
+  width: 35px;
+}
+
 // card styling
 // change to have dark background and light text later?
 
 .card article {
-  padding: 20px;
+  //padding: 20px;
   flex: 1;
 
   display: flex;
@@ -82,7 +88,7 @@ a.card:hover, a.card:visited, a.card:link, a.card:active
 }
  // typography
 .card article {
-  padding: 20px;
+  padding: 15px;
 }
 
 /* typography */
