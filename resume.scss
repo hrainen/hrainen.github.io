@@ -1,0 +1,174 @@
+$hoverColor: #16a085;
+$textColor: #ffffff;
+$bgColor: #2c3e50;
+$posVal: fixed;
+$opacLogo: .2;
+$numSections: 6;
+$blurAmount: 10px;
+
+body, html {
+  height: 100%;
+}
+
+
+// ==================  devicon css  ================================== //
+.devicon-python {
+  max-width: 2em;
+}
+
+.devicon-c{
+  max-width: 2em;
+}
+
+.devicon-cplusplus{
+  max-width: 2em;
+}
+
+.devicon-js{
+  max-width: 2em;
+}
+
+.devicon-csharp{
+  max-width: 2em;
+}
+
+// ==================  resume info css  ================================== //
+
+.resume-container{
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(auto, 1fr);
+  padding: 25px 0px 50px 0px;
+  overflow-y: scroll;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 25px;
+}
+
+.section {
+  padding-left: 25px;
+  text-align: right;
+  width: 250px;
+}
+
+.info{
+  margin-right: 150px;
+  padding-top: 7px;
+  text-align: justify;
+
+  // typography
+  font-size: 20px;
+  color: #bfc6da;
+}
+
+.info#Education{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.education-info{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.education-date{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+
+// ================== background img css ================================= //
+a#logo-navbar-img > img {
+  //background-image: url("/img/logo.png");
+  height: 35px;
+  width: 35px;
+}
+
+.info ul > li {
+  display: inline;
+  padding-right: 5px;
+}
+
+
+.bg:before{
+  display: block;
+  height: 100%;
+  width: 100%;
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  /* The image used */
+  background-image: url("blue_forest.jpg");
+
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1.1);
+
+  -webkit-filter: blur($blurAmount);
+  -moz-filter: blur($blurAmount);
+  -o-filter: blur($blurAmount);
+  -ms-filter: blur($blurAmount);
+  filter: blur($blurAmount);
+  overflow-y: hidden;
+}
+.bg {
+  //position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  color: white;
+  //overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* center links on nav */
+.navbar-nav {
+  float:none;
+  margin:0 auto;
+  display: block;
+  text-align: center;
+}
+
+/* center links on nav */
+.navbar-nav > li {
+  display: inline-block;
+  float:none;
+}
+
+/* change the background color */
+.navbar-custom {
+  background-color: $bgColor;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.9);
+    padding: .8rem 4rem;
+}
+
+/* change the link color and add padding for height */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    padding: 1rem 1rem;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+    background-color: $hoverColor; /* add background-color to active links */
+}
