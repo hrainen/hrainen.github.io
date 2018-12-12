@@ -3,6 +3,9 @@ $textColor: #ffffff;
 $bgColor: #2c3e50;
 $posVal: fixed;
 $opacLogo: .2;
+$bioHeadColor: #291f17;
+$aboutColor: #996955;
+$interestColor: #2f354a;
 
 body, html {
   height: 100%;
@@ -21,7 +24,7 @@ body, html {
   padding-top: 50px;
   text-align: center;
   padding-bottom: 5px;
-  background-color: #67838f;
+  background-color: $bioHeadColor;
 }
 
 .profile-picture{
@@ -55,7 +58,7 @@ body, html {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 15% 85%;
   grid-column-gap: 50px;
-  background-color: #262d42;
+  background-color: $aboutColor;
 }
 
 .bio-content-title{
@@ -110,10 +113,42 @@ li {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 15% 85%;
   grid-column-gap: 50px;
-  background-color: #2f354a;
+  background-color: $interestColor;
 }
 
 // ========================== Background / nav css ===========================//
+
+// if bigger than phone, do standard
+@media only screen and (max-width: 900px) {
+  .bio-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr;
+    padding: 5px 5px;
+    grid-column-gap: 0px;
+  }
+
+  .bio-left-col{
+    margin: 15px;
+    padding: 15px 0px 0px 5px;
+    overflow-x: hidden;
+    grid-column: 1 / 3;
+  }
+
+  .bio-right-col{
+    margin: 15px;
+    padding: 10px 5px 0px 0px;
+    overflow: hidden;
+    grid-column: 1 / 3;
+  }
+  .interests-content{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr;
+    padding: 5px 5px;
+    grid-column-gap: 0px;
+  }
+
+}
+
 a#logo-navbar-img > img {
   //background-image: url("/img/logo.png");
   height: 35px;

@@ -10,7 +10,7 @@ body, html {
   padding-top: 50px;
   text-align: center;
   padding-bottom: 5px;
-  background-color: #67838f; }
+  background-color: #291f17; }
 
 .profile-picture {
   display: block;
@@ -40,7 +40,7 @@ body, html {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 15% 85%;
   grid-column-gap: 50px;
-  background-color: #262d42; }
+  background-color: #996955; }
 
 .bio-content-title {
   text-align: center;
@@ -88,6 +88,30 @@ li {
   grid-column-gap: 50px;
   background-color: #2f354a; }
 
+@media only screen and (max-width: 900px) {
+  .bio-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr;
+    padding: 5px 5px;
+    grid-column-gap: 0px; }
+
+  .bio-left-col {
+    margin: 15px;
+    padding: 15px 0px 0px 5px;
+    overflow-x: hidden;
+    grid-column: 1 / 3; }
+
+  .bio-right-col {
+    margin: 15px;
+    padding: 10px 5px 0px 0px;
+    overflow: hidden;
+    grid-column: 1 / 3; }
+
+  .interests-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr;
+    padding: 5px 5px;
+    grid-column-gap: 0px; } }
 a#logo-navbar-img > img {
   height: 35px;
   width: 35px; }
