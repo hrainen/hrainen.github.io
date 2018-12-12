@@ -53,6 +53,38 @@ body, html {
   grid-column: 1;
   grid-row: 2; }
 
+@media only screen and (max-width: 850px) {
+  .row {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr;
+    grid-gap: 0px;
+    text-align: center; }
+
+  .row#Accomplishments {
+    grid-template-rows: 50px 5fr; }
+
+  .section {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+    text-align: center;
+    width: 250px; }
+
+  .info {
+    margin: 35px;
+    padding-top: 7px;
+    text-align: justify;
+    font-size: 20px;
+    color: #bfc6da; }
+    .info dl {
+      text-align: center; }
+    .info dt {
+      text-align: center; }
+    .info dt {
+      text-align: center; }
+    .info ul {
+      text-align: center; } }
 a#logo-navbar-img > img {
   height: 35px;
   width: 35px; }
