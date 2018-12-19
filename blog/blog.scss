@@ -1,0 +1,182 @@
+$hoverColor: #16a085;
+$textColor: #ffffff;
+$bgColor: #2c3e50;
+$posVal: fixed;
+$opacLogo: .2;
+$yearColor: #9096a0;
+$blogHeaderColor: #bfc7d6;
+$postColor: #959ba7;
+$yearPostsHeight: 130px;
+$postPercentWidth: 45%;
+
+body, html {
+  height: 100%;
+  font-family: trebuchet ms,Verdana,verdana ref,segoe ui,Candara,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif;
+}
+
+a#logo-navbar-img > img {
+  //background-image: url("/img/logo.png");
+  height: 35px;
+  width: 35px;
+}
+
+/* unvisited link */
+.yearBlog a:link {
+  text-decoration: none;
+  color: $postColor;
+}
+
+/* visited link */
+.yearBlog a:visited {
+  text-decoration: none;
+  color: $postColor;
+}
+
+/* mouse over link */
+.yearBlog a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* selected link */
+.yearBlog a:active {
+  text-decoration: none;
+  color: $postColor;
+}
+
+.yearBlog h3{
+  color: $yearColor;
+}
+
+// ============================== blog css ==================================//
+.blogHeader{
+  color: $blogHeaderColor;
+  padding: 15px 15px 15px 30px;
+  height: $yearPostsHeight;
+}
+
+.blogHome{
+  height: 100%;
+  width: 100%;
+  padding: 15px 15px 15px 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: $yearPostsHeight;
+}
+
+.yearBlog{
+  padding: 0px 0px 100px 0px;
+  height: $yearPostsHeight;
+}
+.post{
+  padding: 15px 0px 5px 0px;
+  border-color: $postColor;
+  border-width: 2px;
+  border-bottom-style: dashed;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  line-height: 1.2em;
+  color: grey;
+  height: 60px;
+}
+
+.post p{
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+// =========================== background css ===============================//
+.bg {
+  background-color: #2f3c4a;
+  /* Full height */
+  height: 100%;
+  color: white;
+  overflow-y: scroll;
+}
+
+// ============================== nav css ===================================//
+/* center links on nav */
+.navbar-nav {
+  float:none;
+  margin:0 auto;
+  display: block;
+  text-align: center;
+}
+
+/* center links on nav */
+.navbar-nav > li {
+  display: inline-block;
+  float:none;
+}
+
+/* change the background color */
+.navbar-custom {
+  background-color: $bgColor;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.9);
+    padding: .8rem 4rem;
+}
+
+/* change the link color and add padding for height */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    padding: 1rem 1rem;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+    background-color: $hoverColor; /* add background-color to active links */
+}
+
+
+// Viewing on computer so move things around
+@media only screen and (min-width: 600px) {
+  .blogHeader{
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    padding: 100px 0px 50px 15px;
+  }
+  .yearBlog{
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: $yearPostsHeight;
+  }
+
+  .post{
+    grid-column: 2;
+    padding: 15px 0px 5px 0px;
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+// Viewing on computer so move things around
+@media only screen and (min-width: 930px) {
+  .blogHeader{
+    margin-left: auto;
+    margin-right: auto;
+    width: $postPercentWidth;
+    padding: 100px 0px 50px 15px;
+  }
+  .yearBlog{
+    margin-left: auto;
+    margin-right: auto;
+    width: $postPercentWidth;
+    display: grid;
+    grid-template-columns: 130px 3fr;
+    height: $yearPostsHeight;
+  }
+  .post{
+    grid-column: 2;
+    padding: 15px 0px 5px 0px;
+    grid-template-columns: 3fr 1fr;
+
+  }
+}
