@@ -1,0 +1,109 @@
+// =========================== blog post css vars =========================== //
+$marginWidth: 375px;
+$paddingTop: 50px;
+$blogPostBgColor: #273f56;
+$blogTextColor: white;
+
+
+// ======================= background and nav css vars ====================== //
+$hoverColor: #16a085;
+$textColor: #ffffff;
+$bgColor: #2c3e50;
+$posVal: fixed;
+$opacLogo: .2;
+
+html{
+  //overflow: auto;
+}
+body, html {
+  height: 100%;
+}
+
+a#logo-navbar-img > img {
+  //background-image: url("/img/logo.png");
+  height: 35px;
+  width: 35px;
+}
+// ============================== post css ================================== //
+
+.postContainer{
+  display: grid;
+  grid-template: 1fr;
+  margin-left: $marginWidth;
+  margin-right: $marginWidth;
+  padding-top: 150px;
+  padding-bottom: $paddingTop;
+}
+
+.postContent{
+  background-color: $blogPostBgColor;
+  columns: $blogTextColor;
+  padding: 15px;
+}
+
+.navbar.hide-nav {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+// ======================== background and nav css ========================== //
+.bg {
+  /* The image used */
+  //background-image: url("../../blue_forest.jpg");
+
+  /* Full height */
+  min-height: 100%;
+  background-color: #192b3e;
+  /* Center and scale the image nicely */
+  //background-position: center;
+  //background-repeat: no-repeat;
+  //background-size: cover;
+
+  color: white;
+  //overflow-x: hidden;
+}
+
+
+/* center links on nav */
+.navbar-nav {
+  float:none;
+  margin:0 auto;
+  display: block;
+  text-align: center;
+}
+
+/* center links on nav */
+.navbar-nav > li {
+  display: inline-block;
+  float:none;
+}
+
+.navbar { // hide navbar
+  width: 100%;
+  position: fixed;
+  -webkit-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+/* change the background color */
+.navbar-custom {
+  background-color: $bgColor;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.9);
+    padding: .8rem 4rem;
+}
+
+/* change the link color and add padding for height */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    padding: 1rem 1rem;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+    background-color: $hoverColor; /* add background-color to active links */
+}
