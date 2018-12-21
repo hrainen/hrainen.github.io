@@ -24,7 +24,65 @@ a#logo-navbar-img > img {
   height: 35px;
   width: 35px;
 }
-// ============================== post css ================================== //
+
+// =========================== blog typography ============================== //
+.post-header {
+  padding-bottom: 25px;
+}
+hr {
+  opacity: .2;
+  border-width: 0 0 5px;
+  border-style: dashed;
+  background: 0 0;
+  width: 80%;
+  margin: auto;
+}
+.postContent blockquote{
+  border-left: .25em solid;
+  margin: 1em;
+  padding: 0 1em;
+  font-style: italic;
+
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+.postContent p{
+  letter-spacing: .06em;
+  font-size: 1.25em;
+}
+.postContent sup{
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  font-style: italic;
+  top: -.5em;
+  text-align: right;
+}
+.footnote-ref a{
+  color: $blogTextColor;
+}
+
+pre {
+  padding: 0px 15px;
+}
+
+.postContent img{ // center any images and make sure they fit the div
+  max-width: 100%;
+  max-width: 100%;
+  padding: 0px 0px 5px 0px;
+  display:block;
+  margin:auto;
+}
+.postContent table{
+  padding: 8px;
+  min-width: 100%;
+  border: solid white;
+}
+// =========================== blog post css =============================== //
 
 .postContainer{
   display: grid;
@@ -39,11 +97,16 @@ a#logo-navbar-img > img {
   background-color: $blogPostBgColor;
   columns: $blogTextColor;
   padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
 .navbar.hide-nav {
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
+}
+em {
+  font-style: italic;
 }
 
 // ======================== background and nav css ========================== //
@@ -127,6 +190,7 @@ a#logo-navbar-img > img {
     //padding-bottom: $paddingTop;
   }
 }
+
 /* Large desktop */
 @media (min-width: 850px) and (max-width: 1100px)
 {

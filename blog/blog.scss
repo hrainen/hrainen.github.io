@@ -87,7 +87,7 @@ a#logo-navbar-img > img {
 
 // =========================== background css ===============================//
 .bg {
-  background-color: #2f3c4a;
+  background-color: #192b3e; //#192b3e
   /* Full height */
   height: 100%;
   color: white;
@@ -97,6 +97,7 @@ a#logo-navbar-img > img {
 // ============================== nav css ===================================//
 /* center links on nav */
 .navbar-nav {
+  //position: fixed;
   float:none;
   margin:0 auto;
   display: block;
