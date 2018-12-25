@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" style="text/css" href="reset.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+    <style type="text/css"></style><link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+    <link rel="stylesheet" style="text/css" href="./blogPost.css">
+    <title>Post 1 Dec 20, 2018</title>
+
+  </head>
+  <body>
+  <!-- in your body -->
+
+    <div class="bg">
+      <nav class="navbar navbar-expand-sm navbar-dark navbar-custom p-0" id="myNav">
+        <a class="navbar-brand" id="logo-navbar-img" href="http://hunterrainen.com/"> <img src="../../../img/Logo.png" alt=""> </a>
+        <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../portfolio.html">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../resume.html">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../blogHome.html">Blog</a>
+                </li>
+            </ul>
+        </div>
+      </nav>
+      <div class="postContainer">
+        <article class="postContent">
+          <div class="post-header">
+            <div class="post-meta">
+              <span>Dec 24, 2018</span>
+            </div>
+            <h1>Neural Network Exploration 1  |  Hello world!</h1>
+          </div>
+          <p>
+            I’ve been meaning to do research and experiment with Artificial Neural Networks (ANN’s) for a while and found some time to read up on them.
+            <br><br>
+            I also discovered a library called Keras which is a higher level api for Google’s AI library, Tensorflow. Ideally this should be less grunt work for a beginner like me.
+            <br><br>
+            I started out getting a simple feed forward neural network (NN) to solve the XOR question. XOR is famously a non-linearly separable problem and has a basic premise:
+            <blockquote cite="">
+              <p>
+                Given two inputs ( X1 and X2 ) , the output Y will only be true if ONLY one input is true. Mathematically it is written:  X1 ⊕ X2 = Y.
+              </p>
+            </blockquote>
+          </p>
+          <p>
+            After the success of the XOR NN, I made an attempt to make a NN which predicts a victory in one of my favorite games, <em>League of Legends</em>, given the post game stats as an input. This was interesting but ultimately not a success.
+          </p>
+          <hr>
+          <br>
+          <h3>My tools</h3>
+          <p>
+          I used Anaconda to download all my dependencies and wrote everything in a Jupyter Notebook. As of the writing of this post, none of my notebooks are on my github, but I will likely change that soon.
+          <br><br>
+          Within Jupyter Notebook, I import tensorflow and keras and then create the model and feed it a simple array containing the truth table for XOR,
+          where the inputs are the typical inputs for a XOR gate and the output or labels are the result that you would get if those were inputs running through an XOR gate.
+          <br><br>
+          <h4>Setting up the Neural Net to solve XOR</h4>
+
+        </p>
+          <p>
+            For the XOR, I trained a NN using an array of arrays, each containing two elements.
+          </p>
+        <p>
+          <pre class="prettyprint lang-python">
+              <code>
+  # xor inputs
+  cases = [
+    [1,0], # == true
+    [0,1], # == true
+    [1,1], # == false
+    [0,0]  # == false
+  ]
+              </code>
+         </pre>
+         <p>
+           This is the training data, representing the permutation of possible inputs,
+           and below are the labels are outputs are represented by an array of arrays containing two elements where order matters.
+         </p>
+         <pre class="prettyprint lang-python">
+             <code>
+  # outputs
+  labels = [
+    [1, 0], # true
+    [1, 0], # true
+    [0, 1], # false
+    [0, 1]  # false
+  ]
+             </code>
+        </pre>
+        <p>
+          Then I created a simple model with Keras:
+        </p>
+        <pre class="prettyprint lang-python">
+            <code>
+  model = tf.keras.models.Sequential()
+  model.add(tf.keras.layers.Flatten(input_shape=(2,)))
+  model.add(tf.keras.layers.Dense(25, activation=tf.nn.relu))
+  model.add(tf.keras.layers.Dense(2, activation=tf.nn.softmax, input_shape=(2,)))
+            </code>
+       </pre>
+
+         <p>
+           Then I trained it with the above cases and inputs for 2000 iterations
+           over the same training data. Probably a bit unnecessary, but it worked.
+        </p>
+         <img src="./img/trainingResultXOR.PNG" alt="">
+         <p>
+           Thankfully, the network is small, and each epoch took almost no time at all and successfully predicted the output given two inputs.
+         </p>
+         <img src="./img/PredictionsXOR.PNG" alt="">
+       </p>
+          <hr>
+          <h4 style="padding-top: 15px;">Setup for the League of Legends ANN</h4>
+          <p>
+              <br>
+              Feeling rather confident in my abilities, I wanted to try and build a network
+              to predict my matches in League of legends. I played a few matches and recorded various stats after the game,
+              29 statistics to be specific.
+          </p>
+          <p>
+              The choice of what I recorded was somewhat random ( not well thought out ) as I just wanted to see if I
+              could throw a bunch of data about my games at a Neural Network and see what it would do.
+              <br><br>
+              This was a time consuming process as I haven’t played around with Riot’s api to automatically get data
+              from my games and instead recorded everything manually in a spreadsheet, an improvement for next time.
+          </p>
+          <p>
+              I experimented with a number of different activation functions and loss optimizers,
+              I tried adding a dropout layer which randomly “deletes” the connection from various
+              nodes by setting their weights to zero. This increases robustness and helps to ensure
+              the network doesn’t just memorize the dataset I’m training it on.
+              <br><br>
+              In the end, I tentatively hovered at around 60% getting to 63% in some cases, but any slight changes to the dataset or
+              NN would drop it to a terrible prediction rate. Overall, I found that most often it would almost immediately
+              stagnate at around 60% and not improve.
+          </p>
+          <img src="./img/trainingResultLOL.PNG" alt="">
+          <p>
+            Not so great, somewhat better than a coin toss. Though, it did correctly predict my next match to be a loss.
+          </p>
+          <img src="./img/PredictionLOL.PNG" alt="">
+          <p>
+            <br>
+              There could be many reasons for this, the most likely being that, League of Legends is a complex game,
+               and I only had about 10 matches to train it on.
+                <br><br>
+               Furthermore, there is much more data to collect about
+               my matches ( some not related to league ), such as champion matchups, roles / lanes, lag or ping spikes,
+               how many lanes on my team won, did I get a lot of sleep, how many games of the champion I played during
+                a match have I played total, or even that week. You get the idea.
+          </p>
+          <p>
+            I would also like to find an easy way to view my NN visually, specifically
+            I would be interested in seeing the weights of the network.
+            I’ve read a little about Tensorboard and maybe will find my solution there.
+            <br><br>
+            More importantly however, I’d like to know what inputs or combinations of inputs have the biggest effect on the outcome of my matches.
+            Can I improve my own gameplay by focusing on these factors?
+          </p>
+          <p>
+            This was a fun experiment, and I will do more like this in the near future.
+          </p>
+          <p>
+            Thanks for reading.
+            <br><br>
+            Hunter
+        </p>
+        </article>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="hideNav.js"></script>
+  </body>
+</html>
