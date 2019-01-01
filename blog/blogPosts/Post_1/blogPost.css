@@ -130,6 +130,7 @@ em {
 
 @media only screen and (max-width: 600px) {
   .postContainer {
+    display: block;
     margin-left: 10px;
     margin-right: 10px;
     padding-top: 150px;
@@ -137,6 +138,7 @@ em {
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 600px) and (max-width: 850px) {
   .postContainer {
+    display: block;
     margin-left: 25px;
     margin-right: 25px; } }
 /* Large desktop */
