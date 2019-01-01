@@ -5,6 +5,11 @@ a#logo-navbar-img > img {
   height: 35px;
   width: 35px; }
 
+li {
+  list-style: disc outside none;
+  display: list-item;
+  margin-left: 2em; }
+
 /* unvisited link */
 a {
   text-decoration: none;
