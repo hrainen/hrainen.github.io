@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131578112-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-131578112-1');
+    </script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" style="text/css" href="reset.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+    <style type="text/css"></style><link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+    <link rel="stylesheet" style="text/css" href="./blogPost.css">
+    <title>Hunter Rainen</title>
+
+  </head>
+  <body>
+  <!-- in your body -->
+
+    <div class="bg">
+      <nav class="navbar navbar-expand-sm navbar-dark navbar-custom p-0" id="myNav">
+        <a class="navbar-brand" id="logo-navbar-img" href="http://hunterrainen.com/"> <img src="../../../img/Logo.png" alt=""> </a>
+        <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../about.html">About</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../portfolio.html">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../resume.html">Resume</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../blogHome.html">Blog</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="postContainer">
+        <article class="postContent">
+          <div class="post-header">
+            <div class="post-meta">
+              <span>January 1, 2019</span>
+            </div>
+            <h1>Voxel Engine  | Of Noise and Grids</h1>
+          </div>
+          <p>
+              Feeling much better since yesterday, I managed to make more progress on the voxel rendering.
+              Now my program not only renders multiple chunks, but I also applied
+              <em> Perlin </em> Noise to the chunks and made a simple but crude green material to give chunks that terrain look.
+              This worked, but needs tuning.
+          </p>
+
+          <hr>
+
+          <p>
+              <br>
+              Continuing from where I left off with yesterday’s blog, I refactored my code to render multiple chunks.
+          </p>
+
+          <img src="./img/twochunksshaded.PNG" alt="">
+
+          <img src="./img/twochunksoverdraw.PNG" alt="">
+
+          <p>
+              <br>
+            	However, as you can see in the second picture, currently I am rendering
+              the side of chunks when they will never be seen. I will have add logic to check neighboring chunks.
+          </p>
+
+          <p>
+            	Shortly after getting that working, I set out to apply <em> Perlin </em> Noise to chunks.
+              It works by generating a grid of values between 0 and 1. Then starting from the bottom layer of a given chunk,
+              loop through every block and if the corresponding noise value at that index is within a threshold,
+              that block is solid.
+          </p>
+
+          <p>
+              Every layer I go up the chunk will decrement the threshold
+              for what constitutes a filled in block.
+          </p>
+
+          <img src="./img/NoiseAdded.PNG" alt="">
+
+          <p>
+              <br>
+            	However, this did not work as well as I had hoped. I was expecting that it would be much smoother,
+              and Unity’s built in <em> Perlin </em> Noise didn’t have any parameters to change.
+          </p>
+
+          <p>
+          	  Thankfully I figured out my problem. When I generated my grid of noise values,
+              I used the index of the grid as the input to the noise function (multiplied by a constant).
+              However, that value was much too big, making the resulting steps in the Noise function regress into
+              pure random noise. Reducing the step a couple times
+              smoothed out the values and gave the chunks that characteristic landscape look.
+          </p>
+
+          <img src="./img/NoiseBetter1.PNG" alt="">
+          <img src="./img/NoiseBetter2.PNG" alt="">
+          <img src="./img/NoiseBetter3.PNG" alt="">
+
+          <p>
+              <br>
+            	One final problem that I tackled was that at the edge of each chunk,
+              there is usually a hard edge. I believe this is caused by using the position of
+              the chunk as the input to the noise function ( an annoying mistake I repeated several times in my code )
+              and ( hopefully ) resolved it by multiplying by a small constant, eg. .03.
+          </p>
+
+          <img src="./img/NoiseEdgeFix1.PNG" alt="">
+
+          <p>
+            	Hopefully this fixes the weird transitions at the edge of chunks,
+              but I’ll have to generate more chunks to really test it out.
+              Also, I haven’t rendered more than a row of chunks because I want to make a system that scales infinitely.
+              I’ll likely implement both that and rendering columns of chunks by the end of the week.
+          </p>
+
+
+          <hr>
+
+          <p>
+            <br>
+          	See you in the next one,
+          	<br><br>
+          	Hunter
+          </p>
+
+        </article>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="hideNav.js"></script>
+  </body>
+</html>
