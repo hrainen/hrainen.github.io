@@ -9,8 +9,40 @@ $interestColor: #2f354a;
 
 body, html {
   height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
+$scrollbarWidth: 10px;
+$scrollbarTrackColor: #2c3e50;
+$scrollbarHandleColor: #59728c;
+
+
+// ==================  Scroll bar css ================================ //
+/* width */
+::-webkit-scrollbar {
+  width: $scrollbarWidth;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $scrollbarTrackColor;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $scrollbarHandleColor;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $scrollbarHandleColor;
+}
+
+.aboutContainer{
+  overflow-y: scroll;
+  height: 92vh
+}
 // ============================ About info css ===============================//
 .about-info{
   display: grid;

@@ -6,11 +6,31 @@ $opacLogo: .2;
 $numSections: 6;
 $blurAmount: 10px;
 
-body, html {
-  height: 100%;
+$scrollbarWidth: 10px;
+$scrollbarTrackColor: #2c3e50;
+$scrollbarHandleColor: #59728c;
+
+
+// ==================  Scroll bar css ================================ //
+/* width */
+::-webkit-scrollbar {
+  width: $scrollbarWidth;
 }
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: $scrollbarTrackColor;
+}
 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $scrollbarHandleColor;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $scrollbarHandleColor;
+}
 // ==================  devicon css  ================================== //
 .devicon-python {
   max-width: 2em;
@@ -40,6 +60,7 @@ body, html {
   grid-template-rows: repeat(auto, 1fr);
   padding: 25px 0px 50px 0px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .row{
@@ -215,4 +236,8 @@ a#logo-navbar-img > img {
 .navbar-custom .nav-item:hover .nav-link {
     color: #ffffff;
     background-color: $hoverColor; /* add background-color to active links */
+}
+
+body, html {
+  height: 100%;
 }

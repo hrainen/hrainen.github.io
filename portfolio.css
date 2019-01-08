@@ -1,26 +1,30 @@
 body, html {
   height: 100%; }
 
+/* width */
 ::-webkit-scrollbar {
-  width: 0px;
-  /* remove scrollbar space */
-  background: transparent;
-  /* optional: just make scrollbar invisible */ }
+  width: 10px; }
 
-/* optional: show position indicator in red */
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2c3e50; }
+
+/* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FF0000; }
+  background: #59728c; }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #59728c; }
 
 .band {
-  width: 90%;
-  max-width: 1240px;
   margin: 0 auto;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-gap: 20px;
-  padding: 20px 0;
+  padding: 20px 50px;
   margin-bottom: 50px;
   overflow-y: scroll; }
 

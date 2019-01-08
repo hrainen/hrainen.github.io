@@ -7,19 +7,34 @@ body, html {
   height: 100%;
 }
 
-// remove scrollbar
+
+$scrollbarWidth: 10px;
+$scrollbarTrackColor: #2c3e50;
+$scrollbarHandleColor: #59728c;
+
+
+// ==================  Scroll bar css ================================ //
+/* width */
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+  width: $scrollbarWidth;
 }
-/* optional: show position indicator in red */
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $scrollbarTrackColor;
+}
+
+/* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #FF0000;
+  background: $scrollbarHandleColor;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $scrollbarHandleColor;
 }
 
 .band {
-  width: 90%;
-  max-width: 1240px;
   margin: 0 auto;
   height: 100%;
 
@@ -28,7 +43,7 @@ body, html {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-gap: 20px;
-  padding: 20px 0;
+  padding: 20px 50px;
   margin-bottom: 50px;
 
   // scroll bar issues
