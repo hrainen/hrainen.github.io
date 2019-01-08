@@ -23,7 +23,7 @@
     <style type="text/css"></style><link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
     <link rel="stylesheet" style="text/css" href="./blogPost.css">
-    <title>Hunter Rainen</title>
+    <title>Post 4 Jan 1, 2019</title>
 
   </head>
   <body>
@@ -81,19 +81,20 @@
           <p>
               <br>
             	However, as you can see in the second picture, currently I am rendering
-              the side of chunks when they will never be seen. I will have add logic to check neighboring chunks.
+              the side of chunks when they will never be seen. I will add logic to check neighboring chunks in the next couple updates.
           </p>
 
           <p>
-            	Shortly after getting that working, I set out to apply <em> Perlin </em> Noise to chunks.
+            	Shortly after getting multiple chunks rendering, I set out to apply Perlin Noise to chunks.
               It works by generating a grid of values between 0 and 1. Then starting from the bottom layer of a given chunk,
               loop through every block and if the corresponding noise value at that index is within a threshold,
               that block is solid.
           </p>
 
           <p>
-              Every layer I go up the chunk will decrement the threshold
-              for what constitutes a filled in block.
+              Every layer I go up the chunk will increase the threshold
+              for what constitutes a filled in block, meaning every subsequent layer
+              has fewer and fewer solid blocks.
           </p>
 
           <img src="./img/NoiseAdded.PNG" alt="">
