@@ -48,7 +48,7 @@ $scrollbarHandleColor: #59728c;
 
   // scroll bar issues
   overflow-y: scroll;
-
+  -webkit-overflow-scrolling: touch;
 }
 
 a#logo-navbar-img > img {

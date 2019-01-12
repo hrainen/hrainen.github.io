@@ -60,6 +60,7 @@ $scrollbarHandleColor: #59728c;
   grid-template-rows: repeat(auto, 1fr);
   padding: 25px 0px 50px 0px;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
 }
 

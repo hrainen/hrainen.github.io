@@ -26,7 +26,8 @@ body, html {
   grid-gap: 20px;
   padding: 20px 50px;
   margin-bottom: 50px;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
 
 a#logo-navbar-img > img {
   height: 35px;

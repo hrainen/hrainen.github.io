@@ -21,7 +21,8 @@ body, html {
 
 .aboutContainer {
   overflow-y: scroll;
-  height: 92vh; }
+  -webkit-overflow-scrolling: touch;
+  height: 94vh; }
 
 .about-info {
   display: grid;

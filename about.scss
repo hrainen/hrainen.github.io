@@ -41,7 +41,8 @@ $scrollbarHandleColor: #59728c;
 
 .aboutContainer{
   overflow-y: scroll;
-  height: 92vh
+  -webkit-overflow-scrolling: touch;
+  height: 94vh
 }
 // ============================ About info css ===============================//
 .about-info{
