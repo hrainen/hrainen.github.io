@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131578112-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-131578112-1');
+    </script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" style="text/css" href="reset.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+    <style type="text/css"></style><link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+    <link rel="stylesheet" style="text/css" href="./blogPost.css">
+    <title>Post 5 Jan 22, 2019</title>
+
+  </head>
+  <body>
+  <!-- in your body -->
+
+    <div class="bg">
+      <nav class="navbar navbar-expand-sm navbar-dark navbar-custom p-0" id="myNav">
+        <a class="navbar-brand" id="logo-navbar-img" href="http://hunterrainen.com/"> <img src="../../../img/Logo.png" alt=""> </a>
+        <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../about.html">About</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../portfolio.html">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../resume.html">Resume</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../blogHome.html">Blog</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="postContainer">
+        <article class="postContent">
+          <div class="post-header">
+            <div class="post-meta">
+              <span>Jan 20, 2019</span>
+            </div>
+            <h1>Voxel Engine | Noisy Problems</h1>
+          </div>
+          <p>
+            I added stacking of chunks this week and figured out that my previous
+            "fix" for terrain repeating every chunk didn't actually fix the problem.
+            To fix it I made the constant much smaller constant and redid the function that generated a
+            2d grid of noise values. This worked well enough, but unfortunately, the same problem of
+            repeating terrain re-appeared later on when I added 3D Perlin Noise.
+          </p>
+          <hr>
+          <br>
+
+         <p>Stacking layers of chunk: </p>
+
+         <img src="./img/multiLayeredChunk.PNG" alt="">
+
+         <br>
+
+         <p>
+           While the granularity isn't on a per block basis,
+           it is better than before. and no repeating on a single layer.
+         </p>
+
+         <p>
+           The reason it repeats, in this case, is that the noise generator is still in 2D. I found a solution
+           online that suggested to use a 3D point and sample 2D Perlin noise for every permutation of that 3D point.
+           This did not have the results that I was hoping for and also reintroduced the repeating
+           terrain problem.
+         </p>
+
+         <img src="./img/figuringout3dnoise2.PNG" alt="">
+
+         <br>
+
+         <p>
+           I fixed this issue this time by multiplying by a small constant ( less than 1 ) since whole numbers repeat the same noise function.
+           In other words, using the position of a block will yield the same spot in the noise function.
+         </p>
+         <img src="./img/figuringout3dnoise3.PNG" alt="">
+         <img src="./img/figuringout3dnoise4.PNG" alt="">
+         <img src="./img/figuringout3dnoise5.PNG" alt="">
+       </p>
+       <p>
+         Still doesn't  quite do what I was hoping for, and more experimenting with
+         the intensity of the noise function seemed to yield the same weird bands in the chunks.
+       </p>
+          <hr>
+          <br>
+       <p>
+         This is where I left off at, I tried debugging in visual studio but for some reason, the debugger doesn't seem to work.
+         Breakpoints don't seem to be able to find the line of code they're attached to. Looking into it, it seems like the symbols are not loaded.
+         While I search for a fix for debugging I will be working on other small projects.
+       </p>
+
+       <p>
+         Thanks for reading, <br>
+         see you in the next one.
+       </p>
+        </article>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="hideNav.js"></script>
+  </body>
+</html>
