@@ -66,7 +66,7 @@ $scrollbarHandleColor: #59728c;
 
 .row{
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 250px 5fr;
   grid-gap: 25px;
 }
 
@@ -106,7 +106,7 @@ $scrollbarHandleColor: #59728c;
 @media only screen and (max-width: 850px) {
   .row{
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 50px 5fr;
     grid-gap: 0px;
     text-align: center;
 
